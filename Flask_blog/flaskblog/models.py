@@ -1,7 +1,9 @@
 from datetime import datetime
 from flaskblog import db, login_manager
-# to manage User authentications 
+
+# to manage User authentications
 from flask_login import UserMixin
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -12,9 +14,9 @@ class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(20), unique=True, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
-    img_file = db.Column(db.String(20), nullable=False, default='default.jpg')
+    img_file = db.Column(db.String(20), nullable=False, default="default.jpg")
     password = db.Column(db.String(60), nullable=False)
-    posts = db.relationship('Post', backref='author', lazy=True) # lazy=True
+    posts = db.relationship("Post", backref="author", lazy=True)  # lazy=True
 
     def __repr__(self):
         return f"User('{self.username}', '{self.email}', '{self.img_file}')"
@@ -27,7 +29,7 @@ class Post(db.Model):
     content = db.Column(db.Text, nullable=False)
 
     # user.identity will be column name in our database
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 
     def __repr__(self):
         return f"Post('{self.title}', '{self.date_posted}')"
