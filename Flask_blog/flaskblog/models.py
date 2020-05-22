@@ -1,7 +1,7 @@
 from datetime import datetime
 from flaskblog import db, login_manager
 
-# to manage User authentications
+# to manage User sessions
 from flask_login import UserMixin
 
 
@@ -27,8 +27,6 @@ class Post(db.Model):
     title = db.Column(db.String(100), nullable=False)
     date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
     content = db.Column(db.Text, nullable=False)
-
-    # user.identity will be column name in our database
     user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
 
     def __repr__(self):
