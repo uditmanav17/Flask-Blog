@@ -12,8 +12,9 @@ app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False  # suppresses deprecation w
 db = SQLAlchemy(app)  # sqlite db object
 bcrypt = Bcrypt(app)  # to hash user's password
 login_manager = LoginManager(app)  # login manager to manage user sessions
-login_manager.login_view = "login"
-login_manager.login_message_category = "info"
+# to tell our extension where to redirect when accessing restricted pages
+login_manager.login_view = "login"  # function name of our route
+login_manager.login_message_category = "info"  # replicate flash msg but for login
 
 # to avoid circular import problem
 from flaskblog import routes

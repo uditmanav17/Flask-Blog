@@ -42,8 +42,25 @@ db.create_all()
 @app.route("/")
 @app.route("/home")
 def home():
-    posts = Post.query.all()
+    # get number of page from URL query ?page=x
+    page = request.args.get("page", 1, type=int)
+    # paginate posts, so they don't load all at once
+    posts = Post.query.order_by(Post.date_posted.desc()).paginate(page=page, per_page=5)
     return render_template("home.html", posts=posts)
+
+
+@app.route("/user/<string:username>")
+def user_posts(username):
+    # get number of page from URL query ?page=x
+    page = request.args.get("page", 1, type=int)
+    user = User.query.filter_by(username=username).first_or_404()
+    # paginate posts, so they don't load all at once
+    posts = (
+        Post.query.filter_by(author=user)
+        .order_by(Post.date_posted.desc())
+        .paginate(page=page, per_page=5)
+    )
+    return render_template("user_posts.html", posts=posts, user=user)
 
 
 @app.route("/about")
@@ -85,6 +102,7 @@ def login():
         # match hash of password
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user, remember=form.remember.data)
+            # after logging in, redirect to restricted page that user was trying to access, without login
             next_page = request.args.get("next")
             return redirect(next_page) if next_page else redirect(url_for("home"))
         else:
@@ -199,4 +217,3 @@ def delete_post(post_id):
     db.session.commit()
     flash("Your post has been deleted!", "success")
     return redirect(url_for("home"))
-
