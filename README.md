@@ -5,12 +5,12 @@ Some of the projects do not have a README yet, they are most porbably under deve
 
 # Python Projects
 
-## * [Flask Blog](https://github.com/uditmanav17/Projects/tree/master/Flask_blog)
+ * [Flask Blog](https://github.com/uditmanav17/Projects/tree/master/Flask_blog)
 
 
 # Data Science
 
-## * [Full ML Pipeline Example](https://github.com/uditmanav17/Interesting-Books/tree/master/Hands-On%20ML/Ch2%20Full%20ML%20Pipeline)
+ * [Full ML Pipeline Example](https://github.com/uditmanav17/Interesting-Books/tree/master/Hands-On%20ML/Ch2%20Full%20ML%20Pipeline)
 
 
 
