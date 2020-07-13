@@ -26,10 +26,11 @@ def save_picture(form_picture):
     i.save(picture_path)  # save image
 
     # delete current profile pic from db
-    curr_img = os.path.join(
-        current_app.root_path, "static/profile_pics", current_user.img_file
-    )
-    os.remove(curr_img)
+    if "default" not in current_user.img_file:
+        curr_img = os.path.join(
+            current_app.root_path, "static/profile_pics", current_user.img_file
+        )
+        os.remove(curr_img)
 
     return picture_fn
 

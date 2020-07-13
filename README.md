@@ -6,7 +6,7 @@ Why almost? Because, there is always scope of improvement in web applications.
 * create account
 * update account information (username, email, profile pic)
 * create/update/delete post
-* recover password via mail
+* recover password via mail (needs to setup SMTP server)
 
-
+Checkout screenshots.
 
