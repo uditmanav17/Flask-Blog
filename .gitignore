@@ -1,3 +1,7 @@
+# folders
 __pycache__
 .vscode
+
+# files
+*.db
 
