@@ -13,7 +13,6 @@ main = Blueprint("main", __name__)
 @main.route("/")
 @main.route("/home")
 def home():
-    db.create_all()
     # get number of page from URL query ?page=x
     page = request.args.get("page", 1, type=int)
     # paginate posts, so they don't load all at once
