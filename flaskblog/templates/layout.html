@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+<link rel="icon" href="{{ url_for('static', filename='title_icon.png') }}" type="image/icon type">
 
 <head>
   <!-- Required meta tags -->
@@ -64,13 +65,21 @@
       </div>
       <div class="col-md-4">
         <div class="content-section">
-          <h3>Our Sidebar</h3>
-          <p class='text-muted'>You can put any information here you'd like.
+          <h3>Infobar</h3>
+          <p class='text-muted'>Some random Info.
           <ul class="list-group">
-            <li class="list-group-item list-group-item-light">Latest Posts</li>
-            <li class="list-group-item list-group-item-light">Announcements</li>
-            <li class="list-group-item list-group-item-light">Calendars</li>
-            <li class="list-group-item list-group-item-light">etc</li>
+            {% if current_user.is_authenticated %}
+            <li class="list-group-item list-group-item-light">Hi, {{current_user.username}}! </li>
+            <li class="list-group-item list-group-item-light">Your email: {{current_user.email}}</li>
+            {% else %}
+            <li class="list-group-item list-group-item-light">Hi, Stranger! </li>
+            <li class="list-group-item list-group-item-light">Login Info for Testing </li>
+            <li class="list-group-item list-group-item-light">email - cat@meow.com </li>
+            <li class="list-group-item list-group-item-light">pass - qwerty </li>
+            {% endif %}
+            <li class="list-group-item list-group-item-light">All accounts created will be TEMPORARY, and will cease to
+              exist after 30 min of inactivity. Also, Password recovery functionality is DISABLED as it requires "Less
+              secure app access" turned on for Gmail.</li>
           </ul>
           </p>
         </div>
