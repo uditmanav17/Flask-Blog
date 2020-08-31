@@ -5,8 +5,9 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
 from flaskblog.config import Config
+from flask_bootstrap import Bootstrap
 
-
+bootstrap = Bootstrap()
 db = SQLAlchemy()  # sqlite db object
 bcrypt = Bcrypt()  # to hash user's password
 login_manager = LoginManager()  # login manager to manage user sessions
@@ -20,6 +21,7 @@ def create_app(config_class=Config):
     app = Flask(__name__)
     app.config.from_object(Config)
 
+    bootstrap.init_app(app)
     db.init_app(app)
     bcrypt.init_app(app)
     login_manager.init_app(app)
