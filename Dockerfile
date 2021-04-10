@@ -14,12 +14,12 @@ RUN apk update \
     && apk add postgresql \
     && apk add postgresql-dev \
     && pip3 install --no-cache --upgrade pip setuptools \
-    && pip3 install psycopg2 \
+    && pip3 install --no-cache psycopg2 \
     && apk add jpeg-dev zlib-dev libjpeg \
     && apk add --update musl-dev gcc libffi-dev \
     && apk update \
     && apk add build-base libzmq musl-dev python3 python3-dev zeromq-dev \
-    && pip install Pillow \
+    && pip install --no-cache Pillow \
     && apk del build-deps
 
 # RUN apk add python3
@@ -38,7 +38,7 @@ RUN apk update \
 # for pyzmq
 # RUN apk update && apk add build-base libzmq musl-dev python3 python3-dev zeromq-dev
 
-RUN pip3 install -r requirements.txt
+RUN pip3 install --no-cache -r requirements.txt
 
 EXPOSE 5000
 
