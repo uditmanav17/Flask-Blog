@@ -23,7 +23,7 @@ jupyter-client==6.1.2
 jupyter-core==4.6.3
 MarkupSafe==1.1.1
 olefile==0.46
-Pillow==8.2
+Pillow==8.2.0
 pycparser==2.20
 pyzmq==19.0.0
 rope==0.16.0
